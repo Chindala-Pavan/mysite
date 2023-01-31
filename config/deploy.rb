@@ -35,7 +35,7 @@ set :yarn_roles, :all # default
 set :yarn_env_variables, {}
 append :linked_files, "config/master.key"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "public/uploads"
-
+set :linked_dirs, fetch(:linked_dirs, []).push('public/packs', 'node_modules')
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 

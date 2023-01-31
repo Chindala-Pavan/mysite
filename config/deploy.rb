@@ -36,6 +36,15 @@ set :yarn_env_variables, {}
 append :linked_files, "config/master.key"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "public/uploads"
 set :linked_dirs, fetch(:linked_dirs, []).push('public/packs', 'node_modules')
+
+set :assets_roles, %i[webpack] # Give the webpack role to a single server  
+set :assets_prefix, 'packs' # Assets are located in /packs/
+set :keep_assets, 10 # Automatically remove stale assets
+set :assets_manifests, lambda { # Tell Capistrano-Rails how to find the Webpacker manifests
+  [release_path.join('public', fetch(:assets_prefix), 'manifest.json*')]
+}
+
+set :conditionally_migrate, true # Only attempt migration if db/migrate changed - not related to Webpacker, but a nice thing
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 

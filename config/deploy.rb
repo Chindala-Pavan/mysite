@@ -4,7 +4,7 @@ lock "~> 3.17.1"
 # replace obvious parts
 server '192.168.1.84', port: 22, roles: [:web, :app, :db], primary: true
 set :application, "mysite"
-set :repo_url, "git@github.com:me/mysite.git"
+set :repo_url, "https://Chindala-Pavan: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@github.com/Chindala-Pavan/mysite.git"
 
 set :user, 'rails'
 set :puma_threads,    [4, 16]

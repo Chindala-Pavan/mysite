@@ -27,6 +27,12 @@ set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
+set :nvm_type, :user # or :system, depends on your nvm setup
+set :nvm_map_bins, %w{node npm yarn}
+set :yarn_target_path, -> { release_path.join('client') } #
+set :yarn_flags, '--production --silent --no-progress' # default
+set :yarn_roles, :all # default
+set :yarn_env_variables, {}
 append :linked_files, "config/master.key"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "public/uploads"
 

@@ -2,7 +2,7 @@
 lock "~> 3.17.1"
 
 # replace obvious parts
-server '192.168.29.74', port: 22, roles: [:web, :app, :db], primary: true
+server '192.168.29.74', port: 22, roles: [:web, :app, :db], primary: true, user: 'rails',password: 'rails'
 set :application, "mysite"
 set :repo_url, "git@github.com:Chindala-Pavan/mysite.git"
 

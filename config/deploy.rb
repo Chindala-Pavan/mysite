@@ -2,7 +2,7 @@
 lock "~> 3.17.1"
 
 # replace obvious parts
-server '192.168.1.84', port: 22, roles: [:web, :app, :db], primary: true
+server '192.168.29.74', port: 22, roles: [:web, :app, :db], primary: true
 set :application, "mysite"
 set :repo_url, "https://Chindala-Pavan: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@github.com/Chindala-Pavan/mysite.git"
 
@@ -24,7 +24,7 @@ set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
-
+before "bundler:install", "update_bundler:install"
 append :linked_files, "config/master.key"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "public/uploads"
 
